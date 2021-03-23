@@ -24,4 +24,9 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validation\Interface\" />
+    <Folder Include="Validation\Impl\" />
+  </ItemGroup>
+
 </Project>

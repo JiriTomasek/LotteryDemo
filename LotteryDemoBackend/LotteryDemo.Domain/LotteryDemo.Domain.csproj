@@ -17,4 +17,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BlProvider\Impl\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\LotteryDemo.Database\LotteryDemo.Database.csproj" />
+    <ProjectReference Include="..\LotteryDemo.Entities\LotteryDemo.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

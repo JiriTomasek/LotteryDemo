@@ -5,15 +5,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities.DAO;
+using LotteryDemo.Database.DAO;
+using LotteryDemo.Database.DbContext;
+using LotteryDemo.Domain.BlProvider.Impl;
+using LotteryDemo.Domain.BlProvider.Interface;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace LotteryDemoBackend
 {
     public class Startup
     {
+        public static readonly ILoggerFactory ToolLoggerFactory
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,6 +29,20 @@ namespace LotteryDemoBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<LotteryDemoDbContext>(options => options.UseLoggerFactory(ToolLoggerFactory)
+                    .EnableSensitiveDataLogging(true)
+                    .UseSqlServer(Configuration.GetConnectionString(LotteryDemoDbContextFactory.GetConnStringName("Lottery-demo"))),
+                ServiceLifetime.Transient,
+                ServiceLifetime.Transient);
+
+
+            services.AddTransient<IBaseDaoFactory, LotteryDemoDaoFactory>();
+            services.AddTransient<ILotteryDemoBlProvider, LotteryDemoBlProvider>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LotteryDemo.API", Version = "v1" });
+            });
             services.AddControllers();
         }
 
@@ -33,6 +52,12 @@ namespace LotteryDemoBackend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "LotteryDemo.API v1");
+                    c.RoutePrefix = string.Empty;
+                });
             }
 
             app.UseRouting();
@@ -41,6 +66,7 @@ namespace LotteryDemoBackend
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
         }
