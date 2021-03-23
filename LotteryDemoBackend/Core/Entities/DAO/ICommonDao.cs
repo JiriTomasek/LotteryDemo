@@ -31,5 +31,7 @@ namespace Core.Entities.DAO
 
         public delegate IQueryable<TEntity> Including(IQueryable<TEntity> databaseContent);
 
+        bool TestConnection();
+
     }
 }

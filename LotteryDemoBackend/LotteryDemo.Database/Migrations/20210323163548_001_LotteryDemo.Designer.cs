@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LotteryDemo.Database.Migrations
 {
     [DbContext(typeof(LotteryDemoDbContext))]
-    [Migration("20210323153505_001_LotteryDemo")]
+    [Migration("20210323163548_001_LotteryDemo")]
     partial class _001_LotteryDemo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace LotteryDemo.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Draws");
+                    b.ToTable("DrawHistory");
                 });
 #pragma warning restore 612, 618
         }

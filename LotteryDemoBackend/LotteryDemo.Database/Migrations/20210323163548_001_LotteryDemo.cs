@@ -8,7 +8,7 @@ namespace LotteryDemo.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Draws",
+                name: "DrawHistory",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,14 +22,14 @@ namespace LotteryDemo.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Draws", x => x.Id);
+                    table.PrimaryKey("PK_DrawHistory", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Draws");
+                name: "DrawHistory");
         }
     }
 }

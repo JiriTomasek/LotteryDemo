@@ -1,4 +1,5 @@
 ﻿using LotteryDemo.Entities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace LotteryDemo.Database.DbContext
@@ -13,7 +14,8 @@ namespace LotteryDemo.Database.DbContext
         {
         }
 
-        public virtual DbSet<Draw> Draws { get; set; }
+        public virtual DbSet<Draw> DrawHistory { get; set; }
 
+       
     }
 }

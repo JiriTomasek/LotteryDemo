@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -289,6 +290,10 @@ namespace Core.Database.DAO
             {
                 return null;
             }
+        }
+        public bool TestConnection()
+        {
+            return Context.Database.CanConnect();
         }
 
         #endregion

@@ -1,3 +1,5 @@
+using System;
+using System.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,7 @@ using LotteryDemo.Database.DAO;
 using LotteryDemo.Database.DbContext;
 using LotteryDemo.Domain.BlProvider.Impl;
 using LotteryDemo.Domain.BlProvider.Interface;
+using LotteryDemo.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -47,7 +50,7 @@ namespace LotteryDemoBackend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime hostApplicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +72,14 @@ namespace LotteryDemoBackend
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
+
+
+            var dbDrawDao = new LotteryDemoDaoFactory(new LotteryDemoDbContext()).GetDifferentContextDao<Draw>();
+            if (!dbDrawDao.TestConnection())
+            {
+                ToolLoggerFactory.CreateLogger<Startup>().LogCritical("Invalid connection string or database not exist.");
+                hostApplicationLifetime.StopApplication();
+            }
         }
     }
 }

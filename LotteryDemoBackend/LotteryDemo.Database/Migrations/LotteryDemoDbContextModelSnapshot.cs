@@ -46,7 +46,7 @@ namespace LotteryDemo.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Draws");
+                    b.ToTable("DrawHistory");
                 });
 #pragma warning restore 612, 618
         }
