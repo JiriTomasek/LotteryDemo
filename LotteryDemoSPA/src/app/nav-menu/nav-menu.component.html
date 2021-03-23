@@ -1,0 +1,29 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggleable-xl navbar-dark navbar-background navbar-background-color-primary box-shadow mb-3 scale-in-center fixed-top">
+        <div class="container nav-container" >
+            <a class="navbar-brand" [routerLink]="['/home']"  (click)="collapse()"><div><img src="../../assets/Images/LotteryDemoLogo.png" class="logo-fill" ></div></a>
+            <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+                <fa-icon class="navbar-toggler-icon-custom" [icon]="faListIcon"></fa-icon>
+            </button>
+            <div class="navbar navbar-collapse collapse custom-navbar-collapse " [ngClass]="{ show: isExpanded }">
+                <ul class="navbar-nav flex-grow">
+                  <li class="nav-item nav-item-primary nav-item-border" [routerLinkActive]="['link-active']"  >
+                    <a class="nav-link" [routerLink]="['/home']"  (click)="collapse()">HOME</a>
+                </li>
+                    <li class="nav-item nav-item-primary nav-item-border" [routerLinkActive]="['link-active']" >
+                        <a class="nav-link" [routerLink]="['/lets-play']"  (click)="collapse()">LET'S PLAY</a>
+                    </li>
+                  <li class="nav-item nav-item-primary nav-item-border" [routerLinkActive]="['link-active']" >
+                    <a class="nav-link" [routerLink]="['/DrawHistory']"  (click)="collapse()"
+                      >DRAW HISTORY</a
+                    >
+                  </li>
+                 
+                 
+                </ul>
+              </div>
+              
+              
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,139 @@
+
+$homeH1Color : #949238;
+
+.anim-background-body{
+    z-index: 10;
+  
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(/assets/Images/LotteryHomeBackground.jpg) 0 0 no-repeat;
+    opacity: 0.9;
+    background-size: cover;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  
+  
+  .home-container{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+  
+  .home-content-tab{
+    z-index: 20;
+    margin: 0;
+      max-width: 1600px;
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 15%;
+      text-align: center;
+  }
+  
+  
+  
+  .home-content-tab h1{
+  color: $homeH1Color;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Arial";
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+  }
+  
+  .home-svg-h1{
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-bottom: 0;
+      margin: 0;
+  }
+  .home-content{
+      //margin-top: 50px;
+      padding-top: 50px; 
+      padding-bottom: 50px;
+      padding-left: 50px; 
+      padding-right: 50px; 
+      background-color: rgba(26, 41, 41, 0.65);
+      box-shadow:  5px 10px 18px #949238e6;
+      height: auto;
+  }
+  
+    
+  
+  
+  .img-fill-div{
+      max-height: 256px; height: 100%; width: 100%;object-fit: contain;
+      margin-left: -120px;
+  }
+  
+  
+  .kenburns-top-left2 {
+      -webkit-animation: kenburns-top-left2 3s ease-out both;
+              animation: kenburns-top-left2 3s ease-out both;
+  }
+  
+  @-webkit-keyframes kenburns-top-left2 {
+      0% {
+        -webkit-transform: scale(1) translate(0, 0);
+                transform: scale(1) translate(0, 0);
+        -webkit-transform-origin: 10% 10%;
+                transform-origin: 16% 16%;
+      }
+      100% {
+        -webkit-transform: scale(1.16) translate(-20px, -15px);
+                transform: scale(1.16) translate(-20px, -15px);
+        -webkit-transform-origin: top left;
+                transform-origin: top left;
+      }
+    }
+    @keyframes kenburns-top-left2 {
+      0% {
+        -webkit-transform: scale(1) translate(0, 0);
+                transform: scale(1) translate(0, 0);
+        -webkit-transform-origin: 16% 16%;
+                transform-origin: 16% 16%;
+      }
+      100% {
+        -webkit-transform: scale(1.16) translate(-20px, -15px);
+                transform: scale(1.16) translate(-20px, -15px);
+        -webkit-transform-origin: top left;
+                transform-origin: top left;
+      }
+    }
+    
+  
+    
+    @media (min-width: 404px) {
+      .home-content-tab h1{
+        font-size: 3rem;
+      }
+    }
+    
+    @media (min-width: 590px) {
+      .home-content-tab h1{
+        font-size: 4rem;
+      }
+    }
+    
+    @media (min-width: 720px) {
+      .home-content-tab h1{
+        font-size: 5rem;
+      }
+    }
+    @media (min-width: 880px) {
+      .home-content-tab h1{
+        font-size: 7rem;
+      }
+    }
+  
