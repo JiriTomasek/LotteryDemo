@@ -296,6 +296,19 @@ namespace Core.Database.DAO
             return Context.Database.CanConnect();
         }
 
+        public void Migrate()
+        {
+            try
+            {
+                Context.Database.Migrate();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         #endregion
     }
 }

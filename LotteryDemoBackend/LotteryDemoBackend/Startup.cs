@@ -73,8 +73,14 @@ namespace LotteryDemoBackend
                 endpoints.MapControllers();
             });
 
+            DatabaseVerify(hostApplicationLifetime);
+        }
 
-            var dbDrawDao = new LotteryDemoDaoFactory(new LotteryDemoDbContext()).GetDifferentContextDao<Draw>();
+        private void DatabaseVerify(IHostApplicationLifetime hostApplicationLifetime)
+        {
+            var factory = new LotteryDemoDaoFactory(new LotteryDemoDbContext());
+            var dbDrawDao = factory.GetDifferentContextDao<Draw>();
+            dbDrawDao.Migrate();
             if (!dbDrawDao.TestConnection())
             {
                 ToolLoggerFactory.CreateLogger<Startup>().LogCritical("Invalid connection string or database not exist.");

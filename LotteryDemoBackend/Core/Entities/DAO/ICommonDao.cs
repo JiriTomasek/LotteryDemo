@@ -33,5 +33,6 @@ namespace Core.Entities.DAO
 
         bool TestConnection();
 
+        void Migrate();
     }
 }

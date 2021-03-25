@@ -1,25 +1,14 @@
 
+$btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,197,1) 100%); 
 $homeH1Color : #949238;
 
-.anim-background-body{
-    z-index: 10;
+
   
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: url(/assets/Images/LotteryHomeBackground.jpg) 0 0 no-repeat;
-    opacity: 0.9;
-    background-size: cover;
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+  .main-home-content{
+    width: 100%;
+    height: 100%;
+    padding-top: 5rem;
   }
-  
-  
   
   .home-container{
     width: 100%;
@@ -30,16 +19,17 @@ $homeH1Color : #949238;
   }
   
   .home-content-tab{
+    
+    padding-top: 1rem;
     z-index: 20;
     margin: 0;
       max-width: 1600px;
-      position: absolute;
+      position: relative;
       left: 5%;
       right: 5%;
       top: 15%;
       text-align: center;
   }
-  
   
   
   .home-content-tab h1{
@@ -78,41 +68,6 @@ $homeH1Color : #949238;
   }
   
   
-  .kenburns-top-left2 {
-      -webkit-animation: kenburns-top-left2 3s ease-out both;
-              animation: kenburns-top-left2 3s ease-out both;
-  }
-  
-  @-webkit-keyframes kenburns-top-left2 {
-      0% {
-        -webkit-transform: scale(1) translate(0, 0);
-                transform: scale(1) translate(0, 0);
-        -webkit-transform-origin: 10% 10%;
-                transform-origin: 16% 16%;
-      }
-      100% {
-        -webkit-transform: scale(1.16) translate(-20px, -15px);
-                transform: scale(1.16) translate(-20px, -15px);
-        -webkit-transform-origin: top left;
-                transform-origin: top left;
-      }
-    }
-    @keyframes kenburns-top-left2 {
-      0% {
-        -webkit-transform: scale(1) translate(0, 0);
-                transform: scale(1) translate(0, 0);
-        -webkit-transform-origin: 16% 16%;
-                transform-origin: 16% 16%;
-      }
-      100% {
-        -webkit-transform: scale(1.16) translate(-20px, -15px);
-                transform: scale(1.16) translate(-20px, -15px);
-        -webkit-transform-origin: top left;
-                transform-origin: top left;
-      }
-    }
-    
-  
     
     @media (min-width: 404px) {
       .home-content-tab h1{
@@ -137,3 +92,77 @@ $homeH1Color : #949238;
       }
     }
   
+  .more-space-padding{
+    padding-top: 50px;
+  }
+
+  .home-btn-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-nav-link{
+    font-size: 22px;
+   min-width: 300px;
+  min-height: 60px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+background: $btnLinkBackground;
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  text-decoration: none;
+  }
+
+  .home-nav-link::before {
+    content: '';
+      border-radius: 1000px;
+      min-width: calc(300px + 12px);
+      min-height: calc(60px + 12px);
+      border: 6px solid #00FFCB;
+      box-shadow: 0 0 60px rgba(0,255,203,.64);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all .3s ease-in-out 0s;
+    }
+
+    
+    .home-nav-link:hover, .home-nav-link:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.home-nav-link:hover::before, .home-nav-link:focus::before {
+  opacity: 1;
+}
+
+.home-nav-link::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.home-nav-link:hover::after, .home-nav-link:focus::after {
+  animation: none;
+  display: none;
+}
