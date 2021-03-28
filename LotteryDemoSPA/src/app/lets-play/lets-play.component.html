@@ -14,68 +14,68 @@
     <div class="container content-container">
         <div class="flex-lg-row">
             <div class="draw-btn-wrap"></div>
-            <button class="draw-btn" (click)="roll()">{{drawBtnLabel}}</button>
+            <button class="draw-btn" [disabled]="drawBtnEnabled" (click)="getDraw()">{{drawBtnLabel}}</button>
         </div>
 
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
 
                 <div class="ball-roll">
-                    <div *ngIf="rollDisplay">
+                    <div *ngIf="rollDisplay1">
                         <div class="ball-position bounce-in-top">
                             <img class="ball-img" src="../../assets/Images/drawBall.png">
-                            <label class="ball-img-label">{{draw.DrawNumber1}}</label>
+                            <label class="ball-img-label">{{draw.drawNumber1}}</label>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-sm-2">
                 <div class="ball-roll">
-                    <div *ngIf="rollDisplay">
+                    <div *ngIf="rollDisplay2">
                         <div class="ball-position bounce-in-top">
                             <img class="ball-img" src="../../assets/Images/drawBall.png">
-                            <label class="ball-img-label">{{draw.DrawNumber2}}</label>
+                            <label class="ball-img-label">{{draw.drawNumber2}}</label>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-sm-2">
                 <div class="ball-roll">
-                    <div *ngIf="rollDisplay">
+                    <div *ngIf="rollDisplay3">
                         <div class="ball-position bounce-in-top">
                             <img class="ball-img" src="../../assets/Images/drawBall.png">
-                            <label class="ball-img-label">{{draw.DrawNumber3}}</label>
+                            <label class="ball-img-label">{{draw.drawNumber3}}</label>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-sm-2">
                 <div class="ball-roll">
-                    <div *ngIf="rollDisplay">
+                    <div *ngIf="rollDisplay4">
                         <div class="ball-position bounce-in-top">
                             <img class="ball-img" src="../../assets/Images/drawBall.png">
-                            <label class="ball-img-label">{{draw.DrawNumber4}}</label>
+                            <label class="ball-img-label">{{draw.drawNumber4}}</label>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-sm-2">
                 <div class="ball-roll">
-                    <div *ngIf="rollDisplay">
+                    <div *ngIf="rollDisplay5">
                         <div class="ball-position bounce-in-top">
                             <img class="ball-img" src="../../assets/Images/drawBall.png">
-                            <label class="ball-img-label">{{draw.DrawNumber5}}</label>
+                            <label class="ball-img-label">{{draw.drawNumber5}}</label>
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="col-lg-1"></div>
+            <div class="col-sm-1"></div>
         </div>
 
         <div class="flex-lg-row">

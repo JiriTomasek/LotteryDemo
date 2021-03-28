@@ -10,9 +10,6 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
   }
   
   .content-container{
-      z-index: 10;
-  }
-  .content-container{
     
     padding-top: 1rem;
     z-index: 20;
@@ -48,6 +45,7 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
     outline: none;
     position: relative;
     padding: 10px;
+    
     }
   
     .draw-btn::before {
@@ -96,16 +94,6 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
       border-bottom: 10px solid #313133;
   }
 
-.ball-roll{
-    height: 400px;
-    
-}
-.ball-display-none{
-    display: none;
-}
-.ball-display{
-    display: block;
-}
 
 
   .bounce-in-top {
@@ -116,9 +104,6 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
     position: absolute;
     bottom: 0;
 
-}
-.ball-img{
-    height: 250px;
 }
  @-webkit-keyframes bounce-in-top {
     0% {
@@ -225,12 +210,118 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
     }
   }
   
+
+  .ball-roll{
+        height: 170px;
+        
+    }
+    
+    
+    .ball-img{
+            height: 120px;
+        }
+
   .ball-img-label{
     position: absolute;
     bottom: 19%;
     z-index: 200;
     left: 48%;
-    font-size: 4rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: underline;
   }
+
+  
+  @media (min-width: 576px) {
+        .ball-roll{
+                height: 200px;
+        }
+        .ball-img{
+                height: 95px;
+        }
+        
+        .ball-img-label{
+                font-size: 1.5rem;
+        }
+
+      }
+      @media (min-width: 680px) {
+        .ball-roll{
+                height: 200px;
+        }
+        .ball-img{
+                height: 110px;
+        }
+        
+        .ball-img-label{
+                font-size: 1.5rem;
+        }
+
+      }
+      
+      @media (min-width: 760px) {
+        .ball-roll{
+                height: 200px;
+        }
+        .ball-img{
+                height: 125px;
+        }
+        
+        .ball-img-label{
+                font-size: 2rem;
+        }
+
+      }
+      @media (min-width: 900px) {
+        .ball-roll{
+                height: 200px;
+        }
+        .ball-img{
+                height: 150px;
+        }
+        
+        .ball-img-label{
+                font-size: 2rem;
+        }
+
+      }
+      
+      @media (min-width: 1100px) {
+        .ball-roll{
+                height: 250px;
+        }
+        .ball-img{
+                height: 175px;
+        }
+        
+        .ball-img-label{
+                font-size: 2.5rem;
+        }
+
+      } 
+      @media (min-width: 1250px) {
+        .ball-roll{
+                height: 300px;
+        }
+        .ball-img{
+                height: 200px;
+        }
+        
+        .ball-img-label{
+                font-size: 3rem;
+        }
+
+      }
+      @media (min-width: 1400px) {
+        .ball-roll{
+                height: 400px;
+        }
+        .ball-img{
+                height: 250px;
+        }
+        
+        .ball-img-label{
+                font-size: 4rem;
+        }
+
+      }

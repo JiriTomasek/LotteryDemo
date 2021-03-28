@@ -47,6 +47,15 @@ namespace LotteryDemoBackend
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LotteryDemo.API", Version = "v1" });
             });
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        .SetIsOriginAllowed((host) => true));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +74,7 @@ namespace LotteryDemoBackend
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -72,7 +82,7 @@ namespace LotteryDemoBackend
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
-
+            
             DatabaseVerify(hostApplicationLifetime);
         }
 

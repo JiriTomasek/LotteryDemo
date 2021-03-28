@@ -8,11 +8,13 @@ using Core.Validation.Impl;
 using LotteryDemo.Domain.BlProvider.Interface;
 using LotteryDemo.Entities;
 using LotteryDemoBackend.Model;
+using Microsoft.AspNetCore.Cors;
 
 namespace LotteryDemoBackend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("CorsPolicy")]
     public class DrawController : Controller
     {
         private readonly ILotteryDemoBlProvider _lotteryDemoBlProvider;
@@ -22,13 +24,13 @@ namespace LotteryDemoBackend.Controllers
             _lotteryDemoBlProvider = lotteryDemoBlProvider;
         }
         [HttpPost("SaveDraw")]
-        public IActionResult SaveDraw(DrawModel drawModel)
+        public IActionResult SaveDraw([FromBody] DrawModel data)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ValidationResult.ResultFailed($"Model is invalid. Errors count {ModelState.ErrorCount}"));
             try
             {
-                var entity = MappingUtils.MapToNew<DrawModel, Draw>(drawModel);
+                var entity = MappingUtils.MapToNew<DrawModel, Draw>(data);
                 var result = _lotteryDemoBlProvider.SaveDraw(entity);
                 return Ok(result);
             }

@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 $fontColorDarkTheme :"rgba(59, 8, 8, 0.856)";
 @import "~bootstrap/scss/bootstrap";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+
+$primaryfontColor : #000000;
+$tableHeaderBackground : #707070;
+$headerArrowColor : #60b0f4;
 $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,197,1) 100%); 
 
 
@@ -9,7 +14,7 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
 .background-body{
   
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
@@ -119,3 +124,26 @@ $btnLinkBackground : linear-gradient(90deg, rgb(51, 158, 207) 0%, rgba(79,209,19
       opacity: 0;
     }
   }
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+}
+
+  
+.mat-sort-header .mat-sort-header-container {
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $primaryfontColor;
+}
+
+.mat-header-row{
+  background-color: $tableHeaderBackground;
+  border-bottom: 3px solid $primaryfontColor;
+}
+
+.mat-sort-header-arrow{
+  color: $headerArrowColor;
+}

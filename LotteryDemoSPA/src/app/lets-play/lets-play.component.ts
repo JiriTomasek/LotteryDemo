@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Draw } from 'src/Model/draw.model';
 import { timer } from 'rxjs';
-import { DataServiceService } from '../Services/data-service.service';
+import { DataService } from '../Services/data.service';
+import { StorageService } from '../Services/storage.service';
+import { tap } from 'rxjs/operators';
+import { trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-lets-play',
@@ -10,53 +13,85 @@ import { DataServiceService } from '../Services/data-service.service';
 })
 export class LetsPlayComponent implements OnInit {
   
-  constructor(private dataServiceService: DataServiceService){
+  constructor(private dataService: DataService, private storageService: StorageService){
 
   }  
   
-  
+
   rollDisplay = false;
+  rollDisplay1 = false;
+  rollDisplay2 = false;
+  rollDisplay3 = false;
+  rollDisplay4 = false;
+  rollDisplay5 = false;
+
+  drawBtnEnabled = false;
+
   drawBtnLabel = "Draw"
   public draw: Draw;
+  errorMessages: any;
 
   
   ngOnInit(): void {
   }
 
-  roll(){
-    this.rollDisplay =false;
-    timer(100).subscribe(x => { this.runRoll()
-    });
-    
+  getDraw(){
+    this.rollDisplay1 =false;
+    this.rollDisplay2 =false;
+    this.rollDisplay3 =false;
+    this.rollDisplay4 =false;
+    this.rollDisplay5 =false;
+    this.drawBtnEnabled = true;
+    this.runDraw();
   }
 
-  runRoll(){
-    this.rollDisplay = !this.rollDisplay;
+  runDraw(){
     this.drawBtnLabel = "Draw again"
     this.drawRandomNumber();
+    this.saveDrowToDb();
+    this.showNewDraw();
   }
   
-  drawRandomNumber(){
-    this.draw = new Draw();
+  showNewDraw(){
+    timer(100).subscribe(x => { this.rollDisplay1 = !this.rollDisplay1;
+    });
+    timer(200).subscribe(x => { this.rollDisplay2 = !this.rollDisplay2;
+    });
+    timer(300).subscribe(x => { this.rollDisplay3 = !this.rollDisplay3;
+    });
+    timer(400).subscribe(x => { this.rollDisplay4 = !this.rollDisplay4;
+    });
+    timer(500).subscribe(x => { 
+      this.rollDisplay5 = !this.rollDisplay5;
+      this.drawBtnEnabled = false;
+    });
+  }
 
-    var number = this.getRandomInt(1,55);
-    this.draw.DrawNumber1 = number;
-    while(this.draw.DrawNumber1 == number){
-      var number = this.getRandomInt(1,55);      
+  drawRandomNumber(){
+    var min = 1;
+    var max = 50;
+
+    this.draw = new Draw();
+    this.draw.drawDateTime = new Date();
+
+    var number = this.getRandomInt(min,max);
+    this.draw.drawNumber1 = number;
+    while(this.draw.drawNumber1 == number){
+      var number = this.getRandomInt(min,max);      
     }
-    this.draw.DrawNumber2 = number;
-    while(this.draw.DrawNumber1 == number ||this.draw.DrawNumber2 == number){
-      var number = this.getRandomInt(1,55);      
+    this.draw.drawNumber2 = number;
+    while(this.draw.drawNumber1 == number ||this.draw.drawNumber2 == number){
+      var number = this.getRandomInt(min,max);      
     }
-    this.draw.DrawNumber3 = number;
-    while(this.draw.DrawNumber1 == number||this.draw.DrawNumber2 == number || this.draw.DrawNumber3 == number){
-      var number = this.getRandomInt(1,55);      
+    this.draw.drawNumber3 = number;
+    while(this.draw.drawNumber1 == number||this.draw.drawNumber2 == number || this.draw.drawNumber3 == number){
+      var number = this.getRandomInt(min,max);      
     }
-    this.draw.DrawNumber4 = number;
-    while(this.draw.DrawNumber1 == number||this.draw.DrawNumber2 == number ||this.draw.DrawNumber3 == number || this.draw.DrawNumber4 == number){
-      var number = this.getRandomInt(1,55);      
+    this.draw.drawNumber4 = number;
+    while(this.draw.drawNumber1 == number||this.draw.drawNumber2 == number ||this.draw.drawNumber3 == number || this.draw.drawNumber4 == number){
+      var number = this.getRandomInt(min,max);      
     }
-    this.draw.DrawNumber5 = number;
+    this.draw.drawNumber5 = number;
 
   }
  
@@ -64,6 +99,20 @@ export class LetsPlayComponent implements OnInit {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); 
+  }
+
+  private saveDrowToDb(){
+
+    let url = this.storageService.retrieve('baseUrl') + "api/Draw/SaveDraw";
+
+    let setDrawObserve = this.dataService.post(url, this.draw).pipe<boolean>(tap((response: any) => true));
+
+    setDrawObserve.subscribe(
+      x => {
+          this.errorMessages = [];
+          console.log('Draw save: ' + x);
+      },
+      errMessage => this.errorMessages = errMessage.messages);
   }
  
 }
