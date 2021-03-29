@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  LotteryDemoApiUrl: 'http://localhost:5001/'
+  LotteryDemoApiUrl: '${LotteryDemoApiUrl}'
 };
 
 /*

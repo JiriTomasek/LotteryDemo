@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  lotterydemospa:
+    container_name: lotterydemospa
+    image: ${DOCKER_REGISTRY-}lotterydemospa
+    build:
+      context: .
+      dockerfile: LotteryDemoSPA/Dockerfile
+    volumes: 
+       - './lotterydemospa:/usr/src/app' 
+    ports:
+      - "4200:4200"
+  lotterydemobackend:
+    image: ${DOCKER_REGISTRY-}lotterydemobackend
+    build:
+      context: .
+      dockerfile: LotteryDemoBackend/LotteryDemoBackend/Dockerfile
+    ports:
+      - "5001:80"      
+    networks:
+            default:
+                aliases:
+                    - lotterydemoApi

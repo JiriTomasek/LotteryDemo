@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { StorageService } from './Services/storage.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AppComponent {
 }
 
   ngOnInit() {
-  this.storageService.store('baseUrl', "http://localhost:5001/")
+  this.storageService.store('baseUrl', environment.LotteryDemoApiUrl)
 }
 
 

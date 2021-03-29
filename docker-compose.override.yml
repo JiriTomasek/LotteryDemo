@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  lotterydemospa:
+    environment:
+      - LotteryDemoApiUrl=http://localhost:5001/
+    
+  lotterydemobackend:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+    

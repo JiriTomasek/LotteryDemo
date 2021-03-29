@@ -1,0 +1,2 @@
+cd LotteryDemoSPA
+ng serve

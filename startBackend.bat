@@ -1,0 +1,2 @@
+cd LotteryDemoBackend\LotteryDemoBackend
+dotnet run
