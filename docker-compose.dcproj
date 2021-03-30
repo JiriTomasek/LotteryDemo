@@ -6,7 +6,7 @@
     <ProjectGuid>00bbef36-9e94-497f-93b0-5e83d01fb189</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>lotterydemobackend</DockerServiceName>
+    <DockerServiceName>lotterydemospa</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
